@@ -17,4 +17,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ github.actor }}/app:0.1
+          tags: jenkins-by/app:0.1
