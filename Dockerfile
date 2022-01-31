@@ -5,5 +5,5 @@ COPY . /app
 WORKDIR /app
 RUN npm run bootstrap
 
-ENTRYPOINT ["npm"]
-CMD ["run", "start:bot"]
+ENTRYPOINT [ "npm" ]
+CMD [ "run", "start:bot" ]
