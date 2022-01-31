@@ -35,6 +35,7 @@ pipeline {
           npm run lint
           npm run test
           docker build . -t telegram_bot:0.1'
+        '''
       }
     }
   }
