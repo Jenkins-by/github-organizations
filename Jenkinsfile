@@ -6,7 +6,7 @@ pipeline {
   }
   */
   tools {
-    docker 'docker_latest'
+    dockerTool 'docker_latest'
   }
   options {
     timeout(time: 1, unit: 'HOURS')
