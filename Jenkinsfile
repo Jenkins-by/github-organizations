@@ -13,10 +13,12 @@ pipeline {
   }
   stages {
     stage('run on main branch') { 
+/*
       when {
         beforeAgent true
-//        branch 'main'
+        branch 'main'
       }
+*/
       steps {
         nodejs(nodeJSInstallationName: 'nodejs_12_latest') {
           sh 'node -v'
