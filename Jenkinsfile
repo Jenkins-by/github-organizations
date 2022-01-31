@@ -32,12 +32,12 @@ pipeline {
     }
     stage('docker build') {
       steps {
-        sh '''
+        sh """
           npm run bootstrap
           npm run lint
           npm run test
-          docker build . -t telegram_bot:0.1'
-        '''
+        """
+          //docker build . -t telegram_bot:0.1'
       }
     }
   }
