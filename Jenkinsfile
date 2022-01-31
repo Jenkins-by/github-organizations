@@ -1,8 +1,10 @@
 pipeline {
   agent any
+  /*
   tools {
     node 'nodejs_12_latest'
   }
+  */
   options {
     timeout(time: 1, unit: 'HOURS')
   }
@@ -13,7 +15,9 @@ pipeline {
         branch 'main'
       }
       steps {
-        sh 'node -v'
+        nodejs(nodeJSInstallationName: 'nodejs_12_latest') {
+          sh 'node -v'
+        }
       }
     }
   }
