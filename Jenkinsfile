@@ -1,0 +1,20 @@
+pipeline {
+  agent any
+  tools {
+    nodejs 'nodejs_12_latest'
+  }
+  options {
+    timeout(time: 1, unit: 'HOURS')
+  }
+  stages {
+    stage('run on main branch') { 
+      when {
+        beforeAgent true
+        branch 'main'
+      }
+      steps {
+        sh 'node -v'
+      }
+    }
+  }
+}
