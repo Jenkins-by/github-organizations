@@ -8,7 +8,7 @@ pipeline {
     }
     stage('build image') {
       steps {
-        sh 'docker build -t Jenkins-by/jenkins-example-ghcr:8.5-204 .'
+        sh 'docker build -t jenkins-by/jenkins-example-ghcr:8.5-204 .'
       }
     }
   }
