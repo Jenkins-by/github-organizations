@@ -2,7 +2,7 @@ pipeline {
   agent any
   environment {
     GITHUB_TOKEN = credentials('push-to-ghcr')
-    IMAGE_NAME = 'jenkins-by/jenkins-example-ghcr'
+    IMAGE_NAME = 'jenkins-by/github-organizations'
     IMAGE_VERSION = '8.5-204'
   }
   stages {
@@ -14,6 +14,11 @@ pipeline {
     stage('build image') {
       steps {
         sh 'docker build -t $IMAGE_NAME:$IMAGE_VERSION .'
+      }
+    }
+    stage('scan image') {
+      steps {
+        sh 'trivy image $IMAGE_NAME:$IMAGE_VERSION --no-progress'
       }
     }
     stage('login to ghcr.io') {
