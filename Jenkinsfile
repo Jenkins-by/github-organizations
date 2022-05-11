@@ -18,7 +18,7 @@ pipeline {
     }
     stage('scan image') {
       steps {
-        sh 'trivy image $IMAGE_NAME:$IMAGE_VERSION --no-progress'
+        sh 'trivy image --no-progress $IMAGE_NAME:$IMAGE_VERSION'
       }
     }
     stage('login to ghcr.io') {
