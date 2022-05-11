@@ -2,6 +2,8 @@ pipeline {
   agent any
   environment {
     GITHUB_TOKEN = credentials('push-to-ghcr')
+    IMAGE_NAME = 'jenkins-by/jenkins-example-ghcr'
+    IMAGE_VERSION = '8.5-204'
   }
   stages {
     stage('cleanup') { 
@@ -11,12 +13,22 @@ pipeline {
     }
     stage('build image') {
       steps {
-        sh 'docker build -t jenkins-by/jenkins-example-ghcr:8.5-204 .'
+        sh 'docker build -t $IMAGE_NAME:$IMAGE_VERSION .'
       }
     }
     stage('login to ghcr.io') {
       steps {
-        sh 'echo $GITHUB_TOKEN_PSW | docker login ghcr.io -u $$GITHUB_TOKEN_USR --password-stdin'
+        sh 'echo $GITHUB_TOKEN_PSW | docker login ghcr.io -u $GITHUB_TOKEN_USR --password-stdin'
+      }
+    }
+    stage('tag image') {
+      steps {
+        sh 'docker tag $IMAGE_NAME:$IMAGE_VERSION ghcr.io/$IMAGE_NAME:$IMAGE_VERSION'
+      }
+    }
+    stage('push image') {
+      steps {
+        sh'docker push ghcr.io/$IMAGE_NAME:$IMAGE_VERSION'
       }
     }
   }
