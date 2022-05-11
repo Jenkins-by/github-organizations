@@ -3,7 +3,7 @@ pipeline {
   environment {
     GITHUB_TOKEN = credentials('push-to-ghcr')
     IMAGE_NAME = 'jenkins-by/github-organizations'
-    IMAGE_VERSION = '8.5-204'
+    IMAGE_VERSION = '8.5-205'
   }
   stages {
     stage('cleanup') { 
