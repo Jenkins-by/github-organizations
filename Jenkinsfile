@@ -2,6 +2,7 @@ pipeline {
   agent any
   environment {
     GITHUB_TOKEN = credentials('push-to-ghcr')
+  }
   stages {
     stage('cleanup') { 
       steps {
